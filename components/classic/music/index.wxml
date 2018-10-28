@@ -1,0 +1,11 @@
+<!--components/classic/music/index.wxml-->
+<view hidden="{{hidden}}" class='container'>
+  <!-- 音乐封面图 -->
+  <image  class="classic-img {{playing?'rotation':''}}" src="{{img}}"/>
+  <!-- 默认播放按钮 -->
+  <image bind:tap="onPlay" class="player-img" src="{{!playing?playSrc:pauseSrc}}"/>
+  <!-- 分类名 -->
+  <image class="tag" src="images/music@tag.png"/>
+  <!-- 对应文字 -->
+  <text class="content">{{content}}</text>
+</view>

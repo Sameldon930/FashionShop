@@ -1,0 +1,5 @@
+/* 全局页面的字体样式 */
+page{
+  font-family: "PingFangSC-Thin";
+  font-size: 32rpx;
+}

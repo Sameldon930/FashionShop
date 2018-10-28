@@ -1,0 +1,8 @@
+<!--components/navi/navi.wxml-->
+<view class="container">
+<!-- 如果是最新一期的,左边按钮被禁掉 -->
+<image bind:tap="onLeft" class="icon"src="{{latest?disLeftSrc:leftSrc}}"/>
+<text  class="title">{{title}}</text>
+<!-- 如果是最早一期的,右边按钮被禁掉 -->
+<image bind:tap="onRight" class="icon" src="{{first?disRightSrc:rightSrc}}" />
+</view>

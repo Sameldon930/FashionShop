@@ -1,0 +1,30 @@
+<!-- 数据渲染 从对应页面的js文件进行拿值  classic是从js中自定义的 可从控制台的APPData查看-->
+<view class="container">
+  <view class='header'>
+    <!-- 年月和排序 -->
+    <v-episode  class="episode" index="{{classic.index}}"/>
+    <!-- 点赞 -->
+    <v-like class="like"  bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"/>
+  </view>
+  <!-- 图片和题目还有分类名   电影 音乐 句子-->
+  <!-- hidden会让detached函数失效 所以音乐组件要换成wx.if -->
+  <v-movie hidden="{{classic.type!=100}}" 
+            img="{{classic.image}}" 
+            content="{{classic.content}}"/>
+
+  <v-music  wx:if="{{classic.type==200}}" 
+            src="{{classic.url}}" 
+            img="{{classic.image}}" 
+            content="{{classic.content}}"/>
+  <v-essay hidden="{{classic.type!=300}}" 
+            img="{{classic.image}}" 
+            content="{{classic.content}}"/>
+  <!-- 左右切换标题 -->
+  <v-navi  bind:left="onNext" 
+            bind:right="onPrevious" 
+            class="navi" 
+            title="{{classic.title}}"
+            first="{{first}}" 
+            latest="{{latest}}"/>
+  <!-- first和latest都是从class.js中进行初始化 -->
+</view>

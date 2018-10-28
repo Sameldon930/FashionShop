@@ -1,0 +1,25 @@
+/* pages/my/my.wxss */
+.chunk{
+  width: 150px;
+  height: 100px;
+  display: inline-block;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.color1{
+  background: gray;
+
+}
+.color2{
+  background: yellow;
+
+}
+.color3{
+  background: brown;
+
+}
