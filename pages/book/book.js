@@ -21,12 +21,9 @@ Page({
     const promise = new Promise((resolve,reject)=>{
       //promise三种状态  pending(进行中) fulfilled(执行成功) rejected(执行失败)
         wx.getSystemInfo({
-          success:(res)=>{//回调函数  res是返回的信息   //成功
-            resolve(res)
-          },
-          fail:(error)=>{//失败
-            reject(error)
-          }
+          //回调函数  res是返回的信息  
+          success: res => resolve(res), //成功
+          fail: error => reject(error)//失败 
         })
     })
     promise.then((res)=>{
