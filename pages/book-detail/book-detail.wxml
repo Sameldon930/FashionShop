@@ -1,2 +1,26 @@
 <!--pages/book-detail/book-detail.wxml-->
-<text>pages/book-detail/book-detail.wxml</text>
+<view class='container'>
+  <view class='head'>
+    <image src="{{book.image}}"/>
+    <text class="title">{{book.title}}</text>
+    <text class='author'>{{book.author}}</text>
+  </view>
+  <view class="sub-container">
+    <text class='headline'>短评</text>
+    <view class='comments-container'>
+      <block wx:for="{{comments}}" wx:key="">
+        <v-tag text="{{item.content}}" >
+          <text class="nums" slot="after">{{'+'+item.nums}}</text>  
+          <!-- 名字为after的插槽插入到组件中  插槽的使用必须在组建的js中启用 -->
+        </v-tag>
+      </block>
+    </view>
+  </view>
+  <view class="sub-container">
+    <text class='headline'>内容简介</text>
+    <view class='comments-container'>
+      <text>{{book.summary}}</text>
+    </view>
+  </view>
+
+</view>

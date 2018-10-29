@@ -45,9 +45,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "书单模块",
-					"pathName": "pages/book/book"
+					"pathName": "pages/book-detail/book-detail",
+					"query": "bid=1002"
 				}
 			]
 		}
