@@ -1,7 +1,7 @@
-// pages/book/book.js
+// pages/book-detail/book-detail.js
 import{
   BookModel
-}from '../../models/book.js'
+}from'../../models/book.js'
 const bookModel = new BookModel();
 Page({
 
@@ -9,29 +9,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //纯粹的回调函数来处理异步数据
-    //多个异步等待合并  不需要层层传递callback
-    //async await es2017 处理异步的方案  小程序不支持
-    books:[]//进行循环遍历
-
-
+    //c初始化
+    comments:[],
+    book:null,
+    likeStatus:false,
+    likeCount:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //调用方法
-    bookModel.getHostList()
-    //多次调用API
-      .then((res)=>{//api1
-      //从上面获取数据
+    //page接收外部传过来的id  从而进入Id对应的详情页
+    const bid = options.bid;//从组件那边接到bid 
+    const detail = bookModel.getDetail(bid);
+    const comments = bookModel.getComments(bid);
+    const likeStatus = bookModel.getLikeStatus(bid);
+
+    detail.then((res)=>{
+      console.log(res)
       this.setData({
-        books:res
+        book:res
       })
     })
-    
-    
+
+    comments.then((res)=>{
+      console.log(res)
+      
+      this.setData({
+        comments:res
+      })
+    })
+
+    likeStatus.then((res)=>{
+      console.log(res)
+      
+      this.setData({
+        likeStatus: res.like_status,
+        likeCount: res.fav_nums
+      })
+    })
+
   },
 
   /**

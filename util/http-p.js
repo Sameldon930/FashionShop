@@ -52,8 +52,9 @@ class HTTP{
     if(!error_code){
       error_code = 1;
     }
+    const tip =tips[error_code]
     wx.showToast({
-      title: tips[error_code],//调用上面定义的错误信息
+      title: tip?tip:tips[1],//调用上面定义的错误信息
       icon:'none',
       duration:2000
     })

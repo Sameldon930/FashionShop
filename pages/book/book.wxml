@@ -1,2 +1,22 @@
 <!--pages/book/book.wxml-->
-<text>pages/book/book.wxml</text>
+<view class='container'>
+  <view class="header">
+    <view class="box">
+      <image src='../../images/icon/search.png'/>
+      <text>搜索书籍</text>
+    </view>
+  </view>
+  <view class='sub-container'>
+    <image class='head-img' src="../../images/book/quality.png"/>
+    <view class="books-container">
+      <block wx:key="id" wx:for="{{books}}" ><!--将books 进行遍历-->
+        <v-book book="{{item}}"/>
+        <!-- wx:key 是一个object对象 不重复 是数字或者字符串 -->
+        <!-- 如果列表中的元素是数字或者字符串的 还可以改写成*this -->
+      </block>
+    </view>
+  </view>
+</view>
+
+
+
