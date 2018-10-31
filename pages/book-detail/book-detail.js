@@ -17,7 +17,8 @@ Page({
     comments:[],
     book:null,
     likeStatus:false,//点赞状态
-    likeCount:0//点赞数量 
+    likeCount:0,//点赞数量 
+    posting:false//没有打开短评的输入框
   },
 
   /**
@@ -55,10 +56,24 @@ Page({
     
 
   },
+  //短评旁边的点赞
   onLike(event) {
     const like_or_cancel = event.detail.behavior;
     likeModel.like(like_or_cancel,this.data.book.id,400)
     // 400代表书籍的类型
+  },
+  //点击输入短评，出现遮罩层
+  onFakePost(event){
+    this.setData({
+      posting:true//点击的时候，就会打开输入框
+    })
+
+  },
+  //点击取消，面板隐藏
+  onCancel(){
+    this.setData({
+      posting:false
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
