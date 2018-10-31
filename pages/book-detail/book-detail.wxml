@@ -11,7 +11,8 @@
   <view class="sub-container">
     <text class='headline'>短评</text>
     <view class='comments-container'>
-      <block wx:for="{{comments}}" wx:key="">
+    <!-- 限制获取的条数 -->
+      <block wx:for="{{util.limit(comments,5)}}" wx:key="">
       <!-- {{index}}可以指定循环的序号 -->
       <!-- tag-class是通过外部样式的方式进行编写判断 下标从0开始 -->
       <!-- tag-class="{{index==0?'ex-tag1':'' || index==1?'ex-tag2':''}}"  -->
