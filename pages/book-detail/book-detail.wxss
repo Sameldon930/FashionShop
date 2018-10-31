@@ -70,3 +70,20 @@
   background: #eefbff;
 }
 
+.content{
+  /* 首行缩进字符 */
+  text-indent:58rpx;
+  font-weight: 500;
+  text-align: justify;
+}
+/* 外部样式 */
+
+/* .ex-tag1{/* 第一个短评颜色 */
+  /* background: #fffbdd !important;
+  
+}
+.ex-tag2{/* 第二个短评颜色 */
+  /* background: #eefbff !important;
+  
+} */ 
+

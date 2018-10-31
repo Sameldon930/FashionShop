@@ -6,6 +6,8 @@ Component({
   options:{//启用插槽
     multipleSlots:true
   },
+  //定义参数接收组件外部的样式
+  externalClasses:['tag-class'],
   properties: {
     text:String,
   },

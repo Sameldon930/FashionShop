@@ -1,0 +1,11 @@
+// 消除反斜杠n
+var format = function(text){
+  if(!text){
+    return
+  }
+  var reg =  getRegExp('\\\\n','g')
+  return text.replace(reg,'\n&nbsp;')
+}
+module.exports = {
+  format:format
+}

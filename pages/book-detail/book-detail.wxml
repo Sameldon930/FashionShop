@@ -1,4 +1,7 @@
 <!--pages/book-detail/book-detail.wxml-->
+<!-- 引入wxs模块 -->
+<wxs src="../../util/filter.wxs" module="util"/>
+
 <view class='container'>
   <view class='head'>
     <image src="{{book.image}}"/>
@@ -9,7 +12,11 @@
     <text class='headline'>短评</text>
     <view class='comments-container'>
       <block wx:for="{{comments}}" wx:key="">
-        <v-tag text="{{item.content}}" >
+      <!-- {{index}}可以指定循环的序号 -->
+      <!-- tag-class是通过外部样式的方式进行编写判断 下标从0开始 -->
+      <!-- tag-class="{{index==0?'ex-tag1':'' || index==1?'ex-tag2':''}}"  -->
+        <v-tag  
+            text="{{item.content}}" >
           <text class="nums" slot="after">{{'+'+item.nums}}</text>  
           <!-- 名字为after的插槽插入到组件中  插槽的使用必须在组建的js中启用 -->
         </v-tag>
@@ -18,9 +25,7 @@
   </view>
   <view class="sub-container">
     <text class='headline'>内容简介</text>
-    <view class='comments-container'>
-      <text>{{book.summary}}</text>
-    </view>
+      <text class="content" decode='true'>{{util.format(book.summary)}}</text>
   </view>
 
 </view>

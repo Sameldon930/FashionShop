@@ -1,5 +1,6 @@
 <!--components/tag/index.wxml-->
-<view class='container'>
+<!-- 后面的class是组件的外部样式可以覆盖前面的class -->
+<view class='container tag-class'>
   <text>{{text}}</text>
   <!-- slot 插槽 来显示短评的数量-->
   <slot name="after"></slot>
