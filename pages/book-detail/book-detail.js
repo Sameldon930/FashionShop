@@ -3,6 +3,10 @@ import{
   BookModel
 }from'../../models/book.js'
 const bookModel = new BookModel();
+import {
+  LikeModel
+} from '../../models/like.js'
+const likeModel = new LikeModel();
 Page({
 
   /**
@@ -12,8 +16,8 @@ Page({
     //c初始化
     comments:[],
     book:null,
-    likeStatus:false,
-    likeCount:0
+    likeStatus:false,//点赞状态
+    likeCount:0//点赞数量 
   },
 
   /**
@@ -48,8 +52,14 @@ Page({
       })
     })
 
-  },
+    
 
+  },
+  onLike(event) {
+    const like_or_cancel = event.detail.behavior;
+    likeModel.like(like_or_cancel,this.data.book.id,400)
+    // 400代表书籍的类型
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
