@@ -10,13 +10,14 @@
   </view>
   <view class="sub-container">
     <text class='headline'>短评</text>
+      <text class="shadow" wx:if="{{comments==false}}">暂时没有短评</text>  
     <view class='comments-container'>
     <!-- 限制获取的条数 -->
       <block wx:for="{{util.limit(comments,5)}}" wx:key="">
       <!-- {{index}}可以指定循环的序号 -->
       <!-- tag-class是通过外部样式的方式进行编写判断 下标从0开始 -->
       <!-- tag-class="{{index==0?'ex-tag1':'' || index==1?'ex-tag2':''}}"  -->
-        <v-tag  
+        <v-tag  tag-class="{{tool.highlight(index)}}"
             text="{{item.content}}" >
           <text class="nums" slot="after">{{'+'+item.nums}}</text>  
           <!-- 名字为after的插槽插入到组件中  插槽的使用必须在组建的js中启用 -->
@@ -55,20 +56,39 @@
       <v-like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}"/>
     </view>
   </view>
+  <!-- 点击跳出的输入框 -->
   <view class='posting-container' wx:if="{{posting}}">
     <view class='post-header' >
-      <text>仅可点击标签+1</text>
+      <text wx:if="{{comments==true}}">仅可点击标签+1</text>
+      <text wx:else class="shadow" >暂无标签可选!</text>
       <text  bind:tap="onCancel" class="cancel">取消</text>
     </view>
     <!-- 点赞数最高的标签放的位置 -->
     <view class='comment-container'>
       <block wx:for="{{util.limit(comments,3)}}" wx:key="">
-        <v-tag  
+        <v-tag bind:tapping="onPost" tag-class="{{tool.highlight(index)}}"
             text="{{item.content}}" >
           <text class="nums" slot="after">{{'+'+item.nums}}</text>  
         </v-tag>
       </block>
     </view>
-    <input class='post' placeholder='短评最多12个字'/>
+    <input  bind:confirm="onPost" class='post'  placeholder='短评最多12个字'/>
   </view>
 </view>
+<!-- 点击输入短评的时候,出现遮罩层 -->
+<v-mask  wx:if="{{posting}}"/>
+<!-- tag-class的优化 -->
+<wxs module="tool">
+  var highlight = function(index){
+    if(index==0){
+      return 'ex-tag1';
+    }
+    if(index==1){
+      return 'ex-tag2';
+    }
+    return ''
+  }
+  module.exports={
+    highlight:highlight
+  }
+</wxs> 

@@ -42,6 +42,9 @@
   color: #2f2f2f;
   margin-bottom: 20rpx;
 }
+.shadow{
+  color:#999;
+}
 .comments-container {
   display: flex;
   flex-direction: row;
@@ -63,12 +66,12 @@
   color: #aaa;
 }
 /* 前两个短评的样式 */
-.comments-container > v-tag:nth-child(1) > view{
+/* .comments-container > v-tag:nth-child(1) > view{
   background: #fffbdd;
 }
 .comments-container > v-tag:nth-child(2) > view{
   background: #eefbff;
-}
+} */
 
 .content{
   /* 首行缩进字符 */
@@ -78,14 +81,14 @@
 }
 /* 外部样式 */
 
-/* .ex-tag1{/* 第一个短评颜色 */
-  /* background: #fffbdd !important;
+.ex-tag1{/* 第一个短评颜色 */
+  background: #fffbdd !important;
   
 }
 .ex-tag2{/* 第二个短评颜色 */
-  /* background: #eefbff !important;
+  background: #eefbff !important;
   
-} */ 
+} 
 
 .detail-container{
   width: 100%;

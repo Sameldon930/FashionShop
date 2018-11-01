@@ -12,7 +12,8 @@ Page({
     //纯粹的回调函数来处理异步数据
     //多个异步等待合并  不需要层层传递callback
     //async await es2017 处理异步的方案  小程序不支持
-    books:[]//进行循环遍历
+    books:[],//进行循环遍历
+    searching:false
 
 
   },
@@ -21,19 +22,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //调用方法
-    bookModel.getHostList()
-    //多次调用API
-      .then((res)=>{//api1
-      //从上面获取数据
+    wx.showLoading()
+    const getHostList = bookModel.getHostList();
+    Promise.all([getHostList]).then((res)=>{
       this.setData({
-        books:res
+        books:res[0]
       })
+      wx.hideLoading()
     })
+    // //调用方法
+    // bookModel.getHostList()
+    // //多次调用API
+    //   .then((res)=>{//api1
+    //   //从上面获取数据
+    //   this.setData({
+    //     books:res
+    //   })
+    // })
     
     
   },
-
+  //点击搜索出现搜索页面
+  onSearch(event){
+    this.setData({
+      searching:true
+    })
+  },
+  //点击取消 关闭搜索页面
+  onCancel(event){
+    this.setData({
+      searching:false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

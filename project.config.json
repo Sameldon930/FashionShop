@@ -47,8 +47,8 @@
 				{
 					"id": 1,
 					"name": "书单模块",
-					"pathName": "pages/book-detail/book-detail",
-					"query": "bid=7"
+					"pathName": "pages/book/book",
+					"query": ""
 				}
 			]
 		}

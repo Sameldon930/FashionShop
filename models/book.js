@@ -21,7 +21,7 @@ class BookModel extends HTTP{
       url: 'book/' + bid +'/detail'
     })
   }
-  //获取当前图书籍的点赞状态
+  // 获取当前图书籍的点赞状态
   getLikeStatus(bid){
     return this.request({
       url: 'book/' + bid +'/favor'
@@ -32,6 +32,18 @@ class BookModel extends HTTP{
     return this.request({
       url: 'book/' + bid +'/short_comment'
     })
+  }
+  //封装提交短评的方法  参数是 书籍的id号  还有短评内容 
+  postComment(bid,comment){
+    return this.request({
+      url:'/book/add/short_comment',
+      method:"POST",
+      data:{
+        book_id:bid,
+        content:comment
+      }
+    })
+
   }
 }
 export {BookModel}
