@@ -22,8 +22,10 @@ Page({
       classic:null,
       latest:true,//最新一期初始化
       first:false,//最早一期初始化
-      // likeCount:0,
-      // likeStatus:false
+
+      //以下两个变量单独更新
+      likeCount:0,
+      likeStatus:false
       
   },
   /**
@@ -34,13 +36,13 @@ Page({
     //使用storage的缓存功能保存  将classic的index写入到缓存中--->models的ｃｌａｓｓｉｃ．ｊｓ
     
     classicModel.getLatest((res) => {
-      
       this.setData({//数据绑定和数据更新
          classic: res,//要在data中标识下----前端渲染数据值为 classic.字段名
           
         //...res,//前端渲染的数据值为字段名
-        // likeCount:res.fav_nums,
-        // likeStatus:res.likeStatus
+        //更新
+        likeCount:res.fav_nums,
+        likeStatus:res.like_status
 
       })
       
@@ -68,8 +70,7 @@ Page({
     //获取index  index 存在与data中的classic
     const index = this.data.classic.index;//const代替let let代替var
     classicModel.getClassic(index, nextOrPrevious, (res) => {
-      // console.log(res);
-      // this._getLikeStatus(res.id,res.type)
+      this._getLikeStatus(res.id,res.type)
       //更新数据
       this.setData({
         classic: res,
@@ -81,14 +82,14 @@ Page({
     })
   },
   //调用models中的like.js的方法getClassicLikeStatus
-  // _getLikeStatus:function(artID,category){
-  //   likeModel.getClassicLikeStatus(artID,category,(res)=>{
-  //     this.setData({
-  //         likeCount:res.fav_nums,
-  //         likeStatus:res.likeStatus
-  //     })
-  //   })
-  // },
+  _getLikeStatus:function(artID,category){
+    likeModel.getClassicLikeStatus(artID,category,(res)=>{
+      this.setData({
+          likeCount:res.fav_nums,
+          likeStatus:res.like_status
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
