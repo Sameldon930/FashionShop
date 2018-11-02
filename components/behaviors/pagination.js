@@ -14,7 +14,8 @@ let paginationBev = Behavior({
     // empty:false,
     // ending:false,
     //搜索空内容的变量
-    noneResult:false
+    noneResult:false,
+    loading:false
     
   },
 
@@ -65,12 +66,28 @@ let paginationBev = Behavior({
     initialize(){ 
       this.setData({
         dataArray:[],
-        noneResult:false
+        noneResult:false,
+        loading:false
       })
       // this.data.dataArray = []
       this.data.total = null
     },
-
+    //表示锁状态的私有方法
+    isLocked(){
+      return this.data.loading?true:false
+    },
+    //加锁
+    locked(){
+      this.setData({
+        loading : true
+      })
+    },
+    //解锁
+    unLocked(){
+      this.setData({
+        loading : false
+      })
+    },
 
 
 

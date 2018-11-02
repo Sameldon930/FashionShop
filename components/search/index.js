@@ -70,38 +70,23 @@ Component({
       //必须等一次请求完成后,才能接下去再次请求
       //锁
       //表示正在发送请求
-      if(this._isLocked){
+      if(this.isLocked){
         return 
       }
       // const length = this.data.dataArray.length
       //锁住
       if(this.hasMore()){
-        this._locked()//加锁
+        this.locked()//加锁
         bookModel.search(this.getCurrentStart(),this.data.q).then((res)=>{
           this.setMoreData(res.books)
-          this._unLocked()//解锁
+          this.unLocked()//解锁
         },()=>{//请求失败也要解锁---不会导致死锁
-          this._unLocked()
+          this.unLocked()
         })
       }
       
     },
-    //表示锁状态的私有方法
-    _isLocked(){
-      return this.data.loading?true:false
-    },
-    //加锁
-    _locked(){
-      this.setData({
-        loading : true
-      })
-    },
-    //解锁
-    _unLocked(){
-      this.setData({
-        loading : false
-      })
-    },
+    
     onCancel(event){
       this.triggerEvent('cancel',{},{})
       this.initialize()
