@@ -5,14 +5,20 @@ Component({
    */
   properties: {
     //数据装成对象
-    book:Object
+    book:Object,
+    showLike:{
+      type:Boolean,
+      value:true
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    title:String,
+    author:String,
+    img:String
   },
 
   /**

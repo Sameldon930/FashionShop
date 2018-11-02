@@ -2,6 +2,9 @@
 import{
   BookModel
 }from '../../models/book.js'
+import{
+  random
+}from '../../util/common.js' 
 const bookModel = new BookModel();
 Page({
 
@@ -13,7 +16,9 @@ Page({
     //多个异步等待合并  不需要层层传递callback
     //async await es2017 处理异步的方案  小程序不支持
     books:[],//进行循环遍历
-    searching:false
+    searching:false,
+    //下拉加载的变量
+    more:''
 
 
   },
@@ -30,16 +35,6 @@ Page({
       })
       wx.hideLoading()
     })
-    // //调用方法
-    // bookModel.getHostList()
-    // //多次调用API
-    //   .then((res)=>{//api1
-    //   //从上面获取数据
-    //   this.setData({
-    //     books:res
-    //   })
-    // })
-    
     
   },
   //点击搜索出现搜索页面
@@ -52,6 +47,13 @@ Page({
   onCancel(event){
     this.setData({
       searching:false
+    })
+  },
+  //下拉加载更多
+  //下拉的时候 ,通知组件的more变量进行加载  本文件的data下的more去接收
+  onReachBottom(){
+    this.setData({
+      more:random(16)
     })
   },
   /**

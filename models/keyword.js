@@ -1,7 +1,7 @@
-
-
-
-class KeywordModel{
+import{
+    HTTP
+}from '../util/http-p.js'
+class KeywordModel extends HTTP{
     key = 'q' 
     //限制数组的长度
     maxLength = 10
@@ -17,7 +17,10 @@ class KeywordModel{
     }
     //获取热门搜索
     getHot(){
+        return this.request({
+            url:'/book/hot_keyword'
 
+        })
     }
     //关键字写入到缓存中--为数组
     addToHistory(keyword){

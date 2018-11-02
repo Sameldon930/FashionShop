@@ -37,7 +37,13 @@
   margin-left: 20rpx;
   /* margin-left: */
 }
-
+.book-container{
+  margin-top: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 90rpx ;
+}
 .books-container book-cmp {
   margin-bottom: 25rpx;
 }

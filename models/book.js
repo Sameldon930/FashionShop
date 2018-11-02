@@ -9,6 +9,16 @@ class BookModel extends HTTP{
       url:'book/hot_list'
     })
   }
+  //搜索书籍  start默认情况下是0  q是搜索的关键字
+  search(start,q){
+    return this.request({
+      url:'/book/search?summary=1',
+      data:{
+        q:q,
+        start:start
+      }
+    })
+  }
   //获取书本数量
   getMyBookCount(){
     return this.request({
