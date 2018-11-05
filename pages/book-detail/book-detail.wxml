@@ -52,8 +52,13 @@
     <view bind:tap="onFakePost"class="post-fake">
       <text>输入短评</text>
     </view>
-    <view class="like-container">
-      <v-like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}"/>
+    <view class="like-container">  
+      <view class="like-container">
+        <v-like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}"/>
+      </view>
+      <v-button class="share-btn" open-type="share">
+        <image class="share" slot="img" src="/images/icon/share.png"/> 
+      </v-button>
     </view>
   </view>
   <!-- 点击跳出的输入框 -->

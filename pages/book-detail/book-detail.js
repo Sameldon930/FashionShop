@@ -30,11 +30,13 @@ Page({
     //page接收外部传过来的id  从而进入Id对应的详情页
     const bid = options.bid;//从组件那边接到bid 
     const detail = bookModel.getDetail(bid);
+
     const comments = bookModel.getComments(bid);
     const likeStatus = bookModel.getLikeStatus(bid);
+    console.log(likeStatus);
+
     //并行请求  -- detail comments  likeStatus
     Promise.all([detail,comments,likeStatus]).then((res)=>{
-      // console.log(res);
       this.setData({
         //将下面三个请求 并行到一起
         book:res[0],
@@ -44,25 +46,6 @@ Page({
       })
       wx.hideLoading()
     })
-
-    // detail.then((res)=>{
-    //   this.setData({
-    //     book:res
-    //   })
-    // })
-    // comments.then((res)=>{
-    //   this.setData({
-    //     comments: res.comments
-    //   })
-    // })
-    // likeStatus.then((res)=>{
-    //   this.setData({
-    //     likeStatus: res.like_status,
-    //     likeCount: res.fav_nums
-    //   })
-    // })
-
-    
 
   },
   //短评旁边的点赞

@@ -11,6 +11,10 @@ Component({
       },
       count:{
         type:Number
+      },
+      readOnly:{
+        type:Boolean,
+
       }
   },
 
@@ -31,6 +35,9 @@ Component({
       // onlike方法,切换喜欢和不喜欢 引进自定义参数 event
       onlike:function(event){
         //自定义事件
+        if(this.properties.readOnly){
+          return
+        }
         let like = this.properties.like;
         let count = this.properties.count;
         count = like?count-1:count+1;//like为false数量-1,为true数量+1

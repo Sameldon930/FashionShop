@@ -3,8 +3,14 @@
   <view class='header'>
     <!-- 年月和排序 -->
     <v-episode  class="episode" index="{{classic.index}}"/>
-    <!-- 点赞 -->
-    <v-like class="like"  bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"/>
+    <view class="like-container">  
+      <!-- 点赞 -->
+      <v-like class="like"  bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"/>
+      <!-- 分享按钮 -->
+      <v-button class="share-btn" open-type="share">
+        <image class="share" slot="img" src="/images/icon/share.png"/> 
+      </v-button>
+    </view>
   </view>
   <!-- 图片和题目还有分类名   电影 音乐 句子-->
   <!-- hidden会让detached函数失效 所以音乐组件要换成wx.if -->
