@@ -27,14 +27,14 @@ Component({
       
       
       onLeft:function(event){
-        //如果不是最新一期的
+        //如果不是最新一期的 就可以触发事件
         if (!this.properties.latest) {
           this.triggerEvent('left', {}, {});
         };
           
       },
       onRight: function (event){
-        //如果不是最早一期的
+        //如果不是最早一期的 就可以触发事件
         if (!this.properties.first){
           this.triggerEvent('right', {}, {});
         };

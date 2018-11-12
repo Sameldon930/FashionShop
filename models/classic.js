@@ -45,6 +45,11 @@ class ClassicModel extends HTTP{
   isFirst(index){
     return index == 1 ? true:false 
   }
+  //判断是否最新一期
+  isLatest(index) {
+    let latestIndex = this._getLatestIndex()
+    return latestIndex == index ? true : false
+  }
   //获取我喜欢的
   getMyFavor(success){
     const params = {
@@ -53,11 +58,7 @@ class ClassicModel extends HTTP{
     }
     this.request(params)
   }
-  //判断是否最新一期
-  isLatest(index){
-    let latestIndex = this._getLatestIndex()
-    return latestIndex ==index?true:false
-  }
+  
   //设定私有方法将classic的index放到缓存中
   _setLatestIndex(index){
     wx.setStorageSync('latest', index)//同步写入缓存
