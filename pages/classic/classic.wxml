@@ -14,9 +14,9 @@
   </view>
   <!-- 图片和题目还有分类名   电影 音乐 句子-->
   <!-- hidden会让detached函数失效 所以音乐组件要换成wx.if -->
-  <v-movie hidden="{{classic.type!=100}}" 
-            img="{{classic.image}}" 
-            content="{{classic.content}}"/>
+    <v-movie hidden="{{classic.type!=100}}" 
+              img="{{classic.image}}" 
+              content="{{classic.content}}"/>
 
   <v-music  wx:if="{{classic.type==200}}" 
             src="{{classic.url}}" 

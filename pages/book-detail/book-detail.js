@@ -33,7 +33,6 @@ Page({
 
     const comments = bookModel.getComments(bid);
     const likeStatus = bookModel.getLikeStatus(bid);
-    console.log(likeStatus);
 
     //并行请求  -- detail comments  likeStatus
     Promise.all([detail,comments,likeStatus]).then((res)=>{

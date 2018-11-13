@@ -14,6 +14,7 @@ class ClassicModel extends HTTP{
         this._setLatestIndex(res.index)
         let key = this._getkey(res.index)
         wx.setStorageSync(key, res)
+        
       }
     })
   }

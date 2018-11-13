@@ -13,8 +13,7 @@ Component({
    */
   behaviors: [classicBeh],//继承之后,properties的内容就不需要再填写
   properties: {
-      // img:String,
-      // content:String
+      
       src:String
       
   },
